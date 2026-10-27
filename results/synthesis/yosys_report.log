@@ -1,0 +1,1579 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.70+post (git sha1 0c11ea098be065e585a90a06e7b7da49936cf231, Release, AppleClang clang++ 21.0.0.21000334)
+
+-- Running command `read_verilog rtl/address_decoder.v rtl/cache_data_ram.v rtl/cache_tag_ram.v rtl/valid_bit_ram.v rtl/main_memory.v rtl/tag_comparator.v rtl/cache_controller.v rtl/cache_top.v; hierarchy -check -top cache_top; proc; opt; memory; opt; stat' --
+
+1. Executing Verilog-2005 frontend: rtl/address_decoder.v
+Parsing Verilog input from `rtl/address_decoder.v' to AST representation.
+Generating RTLIL representation for module `\address_decoder'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/cache_data_ram.v
+Parsing Verilog input from `rtl/cache_data_ram.v' to AST representation.
+Generating RTLIL representation for module `\cache_data_ram'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/cache_tag_ram.v
+Parsing Verilog input from `rtl/cache_tag_ram.v' to AST representation.
+Generating RTLIL representation for module `\cache_tag_ram'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/valid_bit_ram.v
+Parsing Verilog input from `rtl/valid_bit_ram.v' to AST representation.
+Generating RTLIL representation for module `\valid_bit_ram'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/main_memory.v
+Parsing Verilog input from `rtl/main_memory.v' to AST representation.
+Generating RTLIL representation for module `\main_memory'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/tag_comparator.v
+Parsing Verilog input from `rtl/tag_comparator.v' to AST representation.
+Generating RTLIL representation for module `\tag_comparator'.
+Successfully finished Verilog frontend.
+
+7. Executing Verilog-2005 frontend: rtl/cache_controller.v
+Parsing Verilog input from `rtl/cache_controller.v' to AST representation.
+Generating RTLIL representation for module `\cache_controller'.
+Successfully finished Verilog frontend.
+
+8. Executing Verilog-2005 frontend: rtl/cache_top.v
+Parsing Verilog input from `rtl/cache_top.v' to AST representation.
+Generating RTLIL representation for module `\cache_top'.
+Successfully finished Verilog frontend.
+
+9. Executing HIERARCHY pass (managing design hierarchy).
+
+9.1. Analyzing design hierarchy..
+Top module:  \cache_top
+Used module:     \cache_controller
+Used module:     \main_memory
+Used module:     \tag_comparator
+Used module:     \valid_bit_ram
+Used module:     \cache_tag_ram
+Used module:     \cache_data_ram
+Used module:     \address_decoder
+
+9.2. Analyzing design hierarchy..
+Top module:  \cache_top
+Used module:     \cache_controller
+Used module:     \main_memory
+Used module:     \tag_comparator
+Used module:     \valid_bit_ram
+Used module:     \cache_tag_ram
+Used module:     \cache_data_ram
+Used module:     \address_decoder
+Removed 0 unused modules.
+
+10. Executing PROC pass (convert processes to netlists).
+
+10.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+10.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$rtl/cache_top.v:193$73 in module cache_top.
+Marked 1 switch rules as full_case in process $proc$rtl/cache_top.v:193$73 in module cache_top.
+Removed 1 dead cases from process $proc$rtl/cache_top.v:154$72 in module cache_top.
+Marked 1 switch rules as full_case in process $proc$rtl/cache_top.v:154$72 in module cache_top.
+Marked 2 switch rules as full_case in process $proc$rtl/cache_top.v:125$67 in module cache_top.
+Marked 1 switch rules as full_case in process $proc$rtl/cache_top.v:54$63 in module cache_top.
+Marked 1 switch rules as full_case in process $proc$rtl/cache_controller.v:74$51 in module cache_controller.
+Marked 4 switch rules as full_case in process $proc$rtl/cache_controller.v:40$49 in module cache_controller.
+Marked 1 switch rules as full_case in process $proc$rtl/cache_controller.v:32$48 in module cache_controller.
+Marked 1 switch rules as full_case in process $proc$rtl/main_memory.v:20$38 in module main_memory.
+Marked 2 switch rules as full_case in process $proc$rtl/valid_bit_ram.v:20$22 in module valid_bit_ram.
+Marked 1 switch rules as full_case in process $proc$rtl/cache_tag_ram.v:16$12 in module cache_tag_ram.
+Marked 1 switch rules as full_case in process $proc$rtl/cache_data_ram.v:19$3 in module cache_data_ram.
+Removed a total of 2 dead cases.
+
+10.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 16 assignments to connections.
+
+10.4. Executing PROC_INIT pass (extract init attributes).
+
+10.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \reset in `\cache_top.$proc$rtl/cache_top.v:125$67'.
+Found async reset \reset in `\cache_top.$proc$rtl/cache_top.v:54$63'.
+Found async reset \reset in `\cache_controller.$proc$rtl/cache_controller.v:74$51'.
+Found async reset \reset in `\cache_controller.$proc$rtl/cache_controller.v:32$48'.
+Found async reset \reset in `\valid_bit_ram.$proc$rtl/valid_bit_ram.v:20$22'.
+
+10.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~14 debug messages>
+
+10.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\cache_top.$proc$rtl/cache_top.v:193$73'.
+     1/1: $1\selected_word[31:0]
+Creating decoders for process `\cache_top.$proc$rtl/cache_top.v:154$72'.
+     1/8: $1\updated_memory_block[127:0] [95:64]
+     2/8: $1\updated_memory_block[127:0] [63:32]
+     3/8: $1\updated_cache_block[127:0] [63:32]
+     4/8: $1\updated_cache_block[127:0] [95:64]
+     5/8: $1\updated_memory_block[127:0] [127:96]
+     6/8: $1\updated_cache_block[127:0] [31:0]
+     7/8: $1\updated_cache_block[127:0] [127:96]
+     8/8: $1\updated_memory_block[127:0] [31:0]
+Creating decoders for process `\cache_top.$proc$rtl/cache_top.v:125$67'.
+     1/1: $0\memory_wait_count[2:0]
+Creating decoders for process `\cache_top.$proc$rtl/cache_top.v:54$63'.
+     1/3: $0\request_write[0:0]
+     2/3: $0\request_write_data[31:0]
+     3/3: $0\request_address[31:0]
+Creating decoders for process `\cache_controller.$proc$rtl/cache_controller.v:74$51'.
+     1/1: $0\hit_result[0:0]
+Creating decoders for process `\cache_controller.$proc$rtl/cache_controller.v:40$49'.
+     1/4: $4\next_state[2:0]
+     2/4: $3\next_state[2:0]
+     3/4: $2\next_state[2:0]
+     4/4: $1\next_state[2:0]
+Creating decoders for process `\cache_controller.$proc$rtl/cache_controller.v:32$48'.
+     1/1: $0\state[2:0]
+Creating decoders for process `\main_memory.$proc$rtl/main_memory.v:20$38'.
+     1/3: $1$memwr$\memory$rtl/main_memory.v:22$36_EN[127:0]$44
+     2/3: $1$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$43
+     3/3: $1$memwr$\memory$rtl/main_memory.v:22$36_ADDR[7:0]$42
+Creating decoders for process `\valid_bit_ram.$proc$rtl/valid_bit_ram.v:20$22'.
+     1/4: $2$lookahead\valid_bits$21[63:0]$28
+     2/4: $2$bitselwrite$pos$rtl/valid_bit_ram.v:24$19[5:0]$27
+     3/4: $1$lookahead\valid_bits$21[63:0]$26
+     4/4: $1$bitselwrite$pos$rtl/valid_bit_ram.v:24$19[5:0]$25
+Creating decoders for process `\cache_tag_ram.$proc$rtl/cache_tag_ram.v:16$12'.
+     1/3: $1$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_EN[21:0]$18
+     2/3: $1$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$17
+     3/3: $1$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_ADDR[5:0]$16
+Creating decoders for process `\cache_data_ram.$proc$rtl/cache_data_ram.v:19$3'.
+     1/3: $1$memwr$\data_mem$rtl/cache_data_ram.v:21$1_EN[127:0]$9
+     2/3: $1$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$8
+     3/3: $1$memwr$\data_mem$rtl/cache_data_ram.v:21$1_ADDR[5:0]$7
+
+10.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\cache_top.\selected_word' from process `\cache_top.$proc$rtl/cache_top.v:193$73'.
+No latch inferred for signal `\cache_top.\updated_cache_block' from process `\cache_top.$proc$rtl/cache_top.v:154$72'.
+No latch inferred for signal `\cache_top.\updated_memory_block' from process `\cache_top.$proc$rtl/cache_top.v:154$72'.
+No latch inferred for signal `\cache_controller.\next_state' from process `\cache_controller.$proc$rtl/cache_controller.v:40$49'.
+
+10.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\cache_top.\memory_wait_count' using process `\cache_top.$proc$rtl/cache_top.v:125$67'.
+  created $adff cell `$procdff$201' with positive edge clock and positive level reset.
+Creating register for signal `\cache_top.\request_address' using process `\cache_top.$proc$rtl/cache_top.v:54$63'.
+  created $adff cell `$procdff$204' with positive edge clock and positive level reset.
+Creating register for signal `\cache_top.\request_write_data' using process `\cache_top.$proc$rtl/cache_top.v:54$63'.
+  created $adff cell `$procdff$207' with positive edge clock and positive level reset.
+Creating register for signal `\cache_top.\request_write' using process `\cache_top.$proc$rtl/cache_top.v:54$63'.
+  created $adff cell `$procdff$210' with positive edge clock and positive level reset.
+Creating register for signal `\cache_controller.\hit_result' using process `\cache_controller.$proc$rtl/cache_controller.v:74$51'.
+  created $adff cell `$procdff$213' with positive edge clock and positive level reset.
+Creating register for signal `\cache_controller.\state' using process `\cache_controller.$proc$rtl/cache_controller.v:32$48'.
+  created $adff cell `$procdff$216' with positive edge clock and positive level reset.
+Creating register for signal `\main_memory.$memwr$\memory$rtl/main_memory.v:22$36_ADDR' using process `\main_memory.$proc$rtl/main_memory.v:20$38'.
+  created $dff cell `$procdff$217' with positive edge clock.
+Creating register for signal `\main_memory.$memwr$\memory$rtl/main_memory.v:22$36_DATA' using process `\main_memory.$proc$rtl/main_memory.v:20$38'.
+  created $dff cell `$procdff$218' with positive edge clock.
+Creating register for signal `\main_memory.$memwr$\memory$rtl/main_memory.v:22$36_EN' using process `\main_memory.$proc$rtl/main_memory.v:20$38'.
+  created $dff cell `$procdff$219' with positive edge clock.
+Creating register for signal `\valid_bit_ram.\valid_bits' using process `\valid_bit_ram.$proc$rtl/valid_bit_ram.v:20$22'.
+  created $adff cell `$procdff$222' with positive edge clock and positive level reset.
+Creating register for signal `\valid_bit_ram.$bitselwrite$pos$rtl/valid_bit_ram.v:24$19' using process `\valid_bit_ram.$proc$rtl/valid_bit_ram.v:20$22'.
+  created $adff cell `$procdff$225' with positive edge clock and positive level reset.
+Creating register for signal `\valid_bit_ram.$lookahead\valid_bits$21' using process `\valid_bit_ram.$proc$rtl/valid_bit_ram.v:20$22'.
+  created $adff cell `$procdff$228' with positive edge clock and positive level reset.
+Creating register for signal `\cache_tag_ram.$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_ADDR' using process `\cache_tag_ram.$proc$rtl/cache_tag_ram.v:16$12'.
+  created $dff cell `$procdff$229' with positive edge clock.
+Creating register for signal `\cache_tag_ram.$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA' using process `\cache_tag_ram.$proc$rtl/cache_tag_ram.v:16$12'.
+  created $dff cell `$procdff$230' with positive edge clock.
+Creating register for signal `\cache_tag_ram.$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_EN' using process `\cache_tag_ram.$proc$rtl/cache_tag_ram.v:16$12'.
+  created $dff cell `$procdff$231' with positive edge clock.
+Creating register for signal `\cache_data_ram.$memwr$\data_mem$rtl/cache_data_ram.v:21$1_ADDR' using process `\cache_data_ram.$proc$rtl/cache_data_ram.v:19$3'.
+  created $dff cell `$procdff$232' with positive edge clock.
+Creating register for signal `\cache_data_ram.$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA' using process `\cache_data_ram.$proc$rtl/cache_data_ram.v:19$3'.
+  created $dff cell `$procdff$233' with positive edge clock.
+Creating register for signal `\cache_data_ram.$memwr$\data_mem$rtl/cache_data_ram.v:21$1_EN' using process `\cache_data_ram.$proc$rtl/cache_data_ram.v:19$3'.
+  created $dff cell `$procdff$234' with positive edge clock.
+
+10.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+10.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\cache_top.$proc$rtl/cache_top.v:193$73'.
+Removing empty process `cache_top.$proc$rtl/cache_top.v:193$73'.
+Found and cleaned up 1 empty switch in `\cache_top.$proc$rtl/cache_top.v:154$72'.
+Removing empty process `cache_top.$proc$rtl/cache_top.v:154$72'.
+Found and cleaned up 2 empty switches in `\cache_top.$proc$rtl/cache_top.v:125$67'.
+Removing empty process `cache_top.$proc$rtl/cache_top.v:125$67'.
+Found and cleaned up 1 empty switch in `\cache_top.$proc$rtl/cache_top.v:54$63'.
+Removing empty process `cache_top.$proc$rtl/cache_top.v:54$63'.
+Found and cleaned up 1 empty switch in `\cache_controller.$proc$rtl/cache_controller.v:74$51'.
+Removing empty process `cache_controller.$proc$rtl/cache_controller.v:74$51'.
+Found and cleaned up 4 empty switches in `\cache_controller.$proc$rtl/cache_controller.v:40$49'.
+Removing empty process `cache_controller.$proc$rtl/cache_controller.v:40$49'.
+Removing empty process `cache_controller.$proc$rtl/cache_controller.v:32$48'.
+Found and cleaned up 1 empty switch in `\main_memory.$proc$rtl/main_memory.v:20$38'.
+Removing empty process `main_memory.$proc$rtl/main_memory.v:20$38'.
+Found and cleaned up 1 empty switch in `\valid_bit_ram.$proc$rtl/valid_bit_ram.v:20$22'.
+Removing empty process `valid_bit_ram.$proc$rtl/valid_bit_ram.v:20$22'.
+Found and cleaned up 1 empty switch in `\cache_tag_ram.$proc$rtl/cache_tag_ram.v:16$12'.
+Removing empty process `cache_tag_ram.$proc$rtl/cache_tag_ram.v:16$12'.
+Found and cleaned up 1 empty switch in `\cache_data_ram.$proc$rtl/cache_data_ram.v:19$3'.
+Removing empty process `cache_data_ram.$proc$rtl/cache_data_ram.v:19$3'.
+Cleaned up 14 empty switches.
+
+10.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cache_top.
+<suppressed ~14 debug messages>
+Optimizing module cache_controller.
+<suppressed ~5 debug messages>
+Optimizing module tag_comparator.
+Optimizing module main_memory.
+Optimizing module valid_bit_ram.
+<suppressed ~3 debug messages>
+Optimizing module cache_tag_ram.
+Optimizing module cache_data_ram.
+Optimizing module address_decoder.
+
+11. Executing OPT pass (performing simple optimizations).
+
+11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cache_top.
+Optimizing module cache_controller.
+Optimizing module tag_comparator.
+Optimizing module main_memory.
+Optimizing module valid_bit_ram.
+Optimizing module cache_tag_ram.
+Optimizing module cache_data_ram.
+Optimizing module address_decoder.
+
+11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cache_top'.
+Computing hashes of 68 cells of `\cache_top'.
+Finding duplicate cells in `\cache_top'.
+Computing hashes of 36 cells of `\cache_top'.
+Finding duplicate cells in `\cache_top'.
+<suppressed ~96 debug messages>
+Finding identical cells in module `\cache_controller'.
+Computing hashes of 29 cells of `\cache_controller'.
+Finding duplicate cells in `\cache_controller'.
+Computing hashes of 21 cells of `\cache_controller'.
+Finding duplicate cells in `\cache_controller'.
+Computing hashes of 20 cells of `\cache_controller'.
+Finding duplicate cells in `\cache_controller'.
+<suppressed ~27 debug messages>
+Finding identical cells in module `\tag_comparator'.
+Computing hashes of 3 cells of `\tag_comparator'.
+Finding duplicate cells in `\tag_comparator'.
+Finding identical cells in module `\main_memory'.
+Computing hashes of 8 cells of `\main_memory'.
+Finding duplicate cells in `\main_memory'.
+Finding identical cells in module `\valid_bit_ram'.
+Computing hashes of 13 cells of `\valid_bit_ram'.
+Finding duplicate cells in `\valid_bit_ram'.
+Computing hashes of 12 cells of `\valid_bit_ram'.
+Finding duplicate cells in `\valid_bit_ram'.
+<suppressed ~3 debug messages>
+Finding identical cells in module `\cache_tag_ram'.
+Computing hashes of 8 cells of `\cache_tag_ram'.
+Finding duplicate cells in `\cache_tag_ram'.
+Finding identical cells in module `\cache_data_ram'.
+Computing hashes of 8 cells of `\cache_data_ram'.
+Finding duplicate cells in `\cache_data_ram'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 0 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 42 cells.
+
+11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cache_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 2/2 on $mux $procmux$147.
+    dead port 2/2 on $mux $procmux$138.
+    dead port 2/2 on $mux $procmux$157.
+Running muxtree optimizer on module \tag_comparator..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \main_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \valid_bit_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $procmux$179.
+    dead port 2/2 on $mux $procmux$179.
+Running muxtree optimizer on module \cache_tag_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_data_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 5 multiplexer ports.
+<suppressed ~55 debug messages>
+
+11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cache_top.
+    New ctrl vector for $pmux cell $procmux$94: { $auto$opt_reduce.cc:137:opt_pmux$239 $procmux$116_CMP }
+    New ctrl vector for $pmux cell $procmux$109: { $procmux$115_CMP $auto$opt_reduce.cc:137:opt_pmux$241 }
+    New ctrl vector for $pmux cell $procmux$89: { $auto$opt_reduce.cc:137:opt_pmux$243 $procmux$117_CMP }
+    New ctrl vector for $pmux cell $procmux$104: { $auto$opt_reduce.cc:137:opt_pmux$245 $procmux$118_CMP }
+    New ctrl vector for $pmux cell $procmux$84: { $auto$opt_reduce.cc:137:opt_pmux$247 $procmux$117_CMP }
+    New ctrl vector for $pmux cell $procmux$79: { $auto$opt_reduce.cc:137:opt_pmux$249 $procmux$116_CMP }
+    New ctrl vector for $pmux cell $procmux$99: { $procmux$115_CMP $auto$opt_reduce.cc:137:opt_pmux$251 }
+    New ctrl vector for $pmux cell $procmux$114: { $auto$opt_reduce.cc:137:opt_pmux$253 $procmux$118_CMP }
+  Optimizing cells in module \cache_top.
+  Optimizing cells in module \cache_controller.
+  Optimizing cells in module \tag_comparator.
+  Optimizing cells in module \main_memory.
+    Consolidated identical input bits for $mux cell $procmux$167:
+      Old ports: A=128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, B=128'11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111, Y=$procmux$167_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$167_Y [0]
+      New connections: $procmux$167_Y [127:1] = { $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] $procmux$167_Y [0] }
+  Optimizing cells in module \main_memory.
+  Optimizing cells in module \valid_bit_ram.
+  Optimizing cells in module \cache_tag_ram.
+    Consolidated identical input bits for $mux cell $procmux$182:
+      Old ports: A=22'0000000000000000000000, B=22'1111111111111111111111, Y=$procmux$182_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$182_Y [0]
+      New connections: $procmux$182_Y [21:1] = { $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] $procmux$182_Y [0] }
+  Optimizing cells in module \cache_tag_ram.
+  Optimizing cells in module \cache_data_ram.
+    Consolidated identical input bits for $mux cell $procmux$191:
+      Old ports: A=128'00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, B=128'11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111, Y=$procmux$191_Y
+      New ports: A=1'0, B=1'1, Y=$procmux$191_Y [0]
+      New connections: $procmux$191_Y [127:1] = { $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] $procmux$191_Y [0] }
+  Optimizing cells in module \cache_data_ram.
+  Optimizing cells in module \address_decoder.
+Performed a total of 11 changes.
+
+11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cache_top'.
+Computing hashes of 44 cells of `\cache_top'.
+Finding duplicate cells in `\cache_top'.
+Computing hashes of 40 cells of `\cache_top'.
+Finding duplicate cells in `\cache_top'.
+<suppressed ~12 debug messages>
+Finding identical cells in module `\cache_controller'.
+Computing hashes of 17 cells of `\cache_controller'.
+Finding duplicate cells in `\cache_controller'.
+Finding identical cells in module `\tag_comparator'.
+Computing hashes of 3 cells of `\tag_comparator'.
+Finding duplicate cells in `\tag_comparator'.
+Finding identical cells in module `\main_memory'.
+Computing hashes of 8 cells of `\main_memory'.
+Finding duplicate cells in `\main_memory'.
+Finding identical cells in module `\valid_bit_ram'.
+Computing hashes of 11 cells of `\valid_bit_ram'.
+Finding duplicate cells in `\valid_bit_ram'.
+Finding identical cells in module `\cache_tag_ram'.
+Computing hashes of 8 cells of `\cache_tag_ram'.
+Finding duplicate cells in `\cache_tag_ram'.
+Finding identical cells in module `\cache_data_ram'.
+Computing hashes of 8 cells of `\cache_data_ram'.
+Finding duplicate cells in `\cache_data_ram'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 0 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 4 cells.
+
+11.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$204 ($adff) from module cache_top (D = \cpu_address, Q = \request_address).
+Adding EN signal on $procdff$210 ($adff) from module cache_top (D = \cpu_write, Q = \request_write).
+Adding EN signal on $procdff$201 ($adff) from module cache_top (D = $procmux$122_Y, Q = \memory_wait_count).
+Adding EN signal on $procdff$207 ($adff) from module cache_top (D = \cpu_write_data, Q = \request_write_data).
+Adding EN signal on $procdff$216 ($adff) from module cache_controller (D = $procmux$161_Y, Q = \state).
+Adding EN signal on $procdff$213 ($adff) from module cache_controller (D = \cache_hit, Q = \hit_result).
+Adding EN signal on $procdff$222 ($adff) from module valid_bit_ram (D = $or$rtl/valid_bit_ram.v:24$35_Y, Q = \valid_bits).
+Setting constant 0-bit at position 0 on $procdff$225 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 1 on $procdff$225 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 2 on $procdff$225 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 3 on $procdff$225 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 4 on $procdff$225 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 5 on $procdff$225 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 0 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 1 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 2 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 3 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 4 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 5 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 6 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 7 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 8 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 9 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 10 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 11 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 12 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 13 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 14 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 15 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 16 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 17 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 18 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 19 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 20 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 21 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 22 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 23 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 24 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 25 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 26 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 27 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 28 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 29 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 30 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 31 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 32 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 33 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 34 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 35 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 36 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 37 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 38 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 39 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 40 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 41 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 42 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 43 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 44 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 45 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 46 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 47 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 48 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 49 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 50 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 51 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 52 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 53 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 54 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 55 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 56 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 57 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 58 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 59 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 60 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 61 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 62 on $procdff$228 ($adff) from module valid_bit_ram.
+Setting constant 0-bit at position 63 on $procdff$228 ($adff) from module valid_bit_ram.
+
+11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cache_top..
+Finding unused cells or wires in module \cache_controller..
+Finding unused cells or wires in module \tag_comparator..
+Finding unused cells or wires in module \main_memory..
+Finding unused cells or wires in module \valid_bit_ram..
+Finding unused cells or wires in module \cache_tag_ram..
+Finding unused cells or wires in module \cache_data_ram..
+Finding unused cells or wires in module \address_decoder..
+Removed 15 unused cells and 161 unused wires.
+<suppressed ~23 debug messages>
+
+11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cache_top.
+Optimizing module cache_controller.
+Optimizing module tag_comparator.
+Optimizing module main_memory.
+Optimizing module valid_bit_ram.
+Optimizing module cache_tag_ram.
+Optimizing module cache_data_ram.
+Optimizing module address_decoder.
+
+11.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+11.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cache_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \tag_comparator..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \main_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \valid_bit_ram..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cache_tag_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_data_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~42 debug messages>
+
+11.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cache_top.
+  Optimizing cells in module \cache_controller.
+  Optimizing cells in module \tag_comparator.
+  Optimizing cells in module \main_memory.
+  Optimizing cells in module \valid_bit_ram.
+  Optimizing cells in module \cache_tag_ram.
+  Optimizing cells in module \cache_data_ram.
+  Optimizing cells in module \address_decoder.
+Performed a total of 0 changes.
+
+11.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cache_top'.
+Computing hashes of 37 cells of `\cache_top'.
+Finding duplicate cells in `\cache_top'.
+Finding identical cells in module `\cache_controller'.
+Computing hashes of 19 cells of `\cache_controller'.
+Finding duplicate cells in `\cache_controller'.
+Finding identical cells in module `\tag_comparator'.
+Computing hashes of 3 cells of `\tag_comparator'.
+Finding duplicate cells in `\tag_comparator'.
+Finding identical cells in module `\main_memory'.
+Computing hashes of 5 cells of `\main_memory'.
+Finding duplicate cells in `\main_memory'.
+Finding identical cells in module `\valid_bit_ram'.
+Computing hashes of 8 cells of `\valid_bit_ram'.
+Finding duplicate cells in `\valid_bit_ram'.
+Finding identical cells in module `\cache_tag_ram'.
+Computing hashes of 5 cells of `\cache_tag_ram'.
+Finding duplicate cells in `\cache_tag_ram'.
+Finding identical cells in module `\cache_data_ram'.
+Computing hashes of 5 cells of `\cache_data_ram'.
+Finding duplicate cells in `\cache_data_ram'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 0 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 0 cells.
+
+11.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+11.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cache_top..
+Finding unused cells or wires in module \cache_controller..
+Finding unused cells or wires in module \tag_comparator..
+Finding unused cells or wires in module \main_memory..
+Finding unused cells or wires in module \valid_bit_ram..
+Finding unused cells or wires in module \cache_tag_ram..
+Finding unused cells or wires in module \cache_data_ram..
+Finding unused cells or wires in module \address_decoder..
+
+11.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cache_top.
+Optimizing module cache_controller.
+Optimizing module tag_comparator.
+Optimizing module main_memory.
+Optimizing module valid_bit_ram.
+Optimizing module cache_tag_ram.
+Optimizing module cache_data_ram.
+Optimizing module address_decoder.
+
+11.16. Finished fast OPT passes. (There is nothing left to do.)
+
+12. Executing MEMORY pass.
+
+12.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+12.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+12.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing main_memory.memory write port 0.
+  Analyzing cache_tag_ram.tag_mem write port 0.
+  Analyzing cache_data_ram.data_mem write port 0.
+
+12.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+12.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\memory'[0] in module `\main_memory':
+    no output FF found.
+Checking read port address `\memory'[0] in module `\main_memory':
+    no address FF found.
+Checking read port `\tag_mem'[0] in module `\cache_tag_ram':
+    no output FF found.
+Checking read port address `\tag_mem'[0] in module `\cache_tag_ram':
+    no address FF found.
+Checking read port `\data_mem'[0] in module `\cache_data_ram':
+    no output FF found.
+Checking read port address `\data_mem'[0] in module `\cache_data_ram':
+    no address FF found.
+
+12.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cache_top..
+Finding unused cells or wires in module \cache_controller..
+Finding unused cells or wires in module \tag_comparator..
+Finding unused cells or wires in module \main_memory..
+Finding unused cells or wires in module \valid_bit_ram..
+Finding unused cells or wires in module \cache_tag_ram..
+Finding unused cells or wires in module \cache_data_ram..
+Finding unused cells or wires in module \address_decoder..
+
+12.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+12.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+12.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cache_top..
+Finding unused cells or wires in module \cache_controller..
+Finding unused cells or wires in module \tag_comparator..
+Finding unused cells or wires in module \main_memory..
+Finding unused cells or wires in module \valid_bit_ram..
+Finding unused cells or wires in module \cache_tag_ram..
+Finding unused cells or wires in module \cache_data_ram..
+Finding unused cells or wires in module \address_decoder..
+
+12.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+12.11. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \memory in module \main_memory:
+  created 256 $dff cells and 0 static cells of width 128.
+  read interface: 0 $dff and 255 $mux cells.
+  write interface: 256 write mux blocks.
+Mapping memory \tag_mem in module \cache_tag_ram:
+  created 64 $dff cells and 0 static cells of width 22.
+  read interface: 0 $dff and 63 $mux cells.
+  write interface: 64 write mux blocks.
+Mapping memory \data_mem in module \cache_data_ram:
+  created 64 $dff cells and 0 static cells of width 128.
+  read interface: 0 $dff and 63 $mux cells.
+  write interface: 64 write mux blocks.
+
+13. Executing OPT pass (performing simple optimizations).
+
+13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cache_top.
+Optimizing module cache_controller.
+Optimizing module tag_comparator.
+Optimizing module main_memory.
+<suppressed ~16 debug messages>
+Optimizing module valid_bit_ram.
+Optimizing module cache_tag_ram.
+<suppressed ~12 debug messages>
+Optimizing module cache_data_ram.
+<suppressed ~12 debug messages>
+Optimizing module address_decoder.
+
+13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cache_top'.
+Computing hashes of 37 cells of `\cache_top'.
+Finding duplicate cells in `\cache_top'.
+Finding identical cells in module `\cache_controller'.
+Computing hashes of 19 cells of `\cache_controller'.
+Finding duplicate cells in `\cache_controller'.
+Finding identical cells in module `\tag_comparator'.
+Computing hashes of 3 cells of `\tag_comparator'.
+Finding duplicate cells in `\tag_comparator'.
+Finding identical cells in module `\main_memory'.
+Computing hashes of 1338 cells of `\main_memory'.
+Finding duplicate cells in `\main_memory'.
+Finding identical cells in module `\valid_bit_ram'.
+Computing hashes of 8 cells of `\valid_bit_ram'.
+Finding duplicate cells in `\valid_bit_ram'.
+Finding identical cells in module `\cache_tag_ram'.
+Computing hashes of 352 cells of `\cache_tag_ram'.
+Finding duplicate cells in `\cache_tag_ram'.
+Finding identical cells in module `\cache_data_ram'.
+Computing hashes of 352 cells of `\cache_data_ram'.
+Finding duplicate cells in `\cache_data_ram'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 0 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 0 cells.
+
+13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cache_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \tag_comparator..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \main_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \valid_bit_ram..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cache_tag_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_data_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~1578 debug messages>
+
+13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cache_top.
+  Optimizing cells in module \cache_controller.
+  Optimizing cells in module \tag_comparator.
+  Optimizing cells in module \main_memory.
+  Optimizing cells in module \valid_bit_ram.
+  Optimizing cells in module \cache_tag_ram.
+  Optimizing cells in module \cache_data_ram.
+  Optimizing cells in module \address_decoder.
+Performed a total of 0 changes.
+
+13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cache_top'.
+Computing hashes of 37 cells of `\cache_top'.
+Finding duplicate cells in `\cache_top'.
+Finding identical cells in module `\cache_controller'.
+Computing hashes of 19 cells of `\cache_controller'.
+Finding duplicate cells in `\cache_controller'.
+Finding identical cells in module `\tag_comparator'.
+Computing hashes of 3 cells of `\tag_comparator'.
+Finding duplicate cells in `\tag_comparator'.
+Finding identical cells in module `\main_memory'.
+Computing hashes of 1338 cells of `\main_memory'.
+Finding duplicate cells in `\main_memory'.
+Finding identical cells in module `\valid_bit_ram'.
+Computing hashes of 8 cells of `\valid_bit_ram'.
+Finding duplicate cells in `\valid_bit_ram'.
+Finding identical cells in module `\cache_tag_ram'.
+Computing hashes of 352 cells of `\cache_tag_ram'.
+Finding duplicate cells in `\cache_tag_ram'.
+Finding identical cells in module `\cache_data_ram'.
+Computing hashes of 352 cells of `\cache_data_ram'.
+Finding duplicate cells in `\cache_data_ram'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 0 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 0 cells.
+
+13.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cache_top..
+Finding unused cells or wires in module \cache_controller..
+Finding unused cells or wires in module \tag_comparator..
+Finding unused cells or wires in module \main_memory..
+Finding unused cells or wires in module \valid_bit_ram..
+Finding unused cells or wires in module \cache_tag_ram..
+Finding unused cells or wires in module \cache_data_ram..
+Finding unused cells or wires in module \address_decoder..
+Removed 0 unused cells and 788 unused wires.
+<suppressed ~3 debug messages>
+
+13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cache_top.
+Optimizing module cache_controller.
+Optimizing module tag_comparator.
+Optimizing module main_memory.
+Optimizing module valid_bit_ram.
+Optimizing module cache_tag_ram.
+Optimizing module cache_data_ram.
+Optimizing module address_decoder.
+
+13.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+13.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cache_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \tag_comparator..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \main_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \valid_bit_ram..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cache_tag_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_data_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~1578 debug messages>
+
+13.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cache_top.
+  Optimizing cells in module \cache_controller.
+  Optimizing cells in module \tag_comparator.
+  Optimizing cells in module \main_memory.
+  Optimizing cells in module \valid_bit_ram.
+  Optimizing cells in module \cache_tag_ram.
+  Optimizing cells in module \cache_data_ram.
+  Optimizing cells in module \address_decoder.
+Performed a total of 0 changes.
+
+13.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cache_top'.
+Computing hashes of 37 cells of `\cache_top'.
+Finding duplicate cells in `\cache_top'.
+Finding identical cells in module `\cache_controller'.
+Computing hashes of 19 cells of `\cache_controller'.
+Finding duplicate cells in `\cache_controller'.
+Finding identical cells in module `\tag_comparator'.
+Computing hashes of 3 cells of `\tag_comparator'.
+Finding duplicate cells in `\tag_comparator'.
+Finding identical cells in module `\main_memory'.
+Computing hashes of 1338 cells of `\main_memory'.
+Finding duplicate cells in `\main_memory'.
+Finding identical cells in module `\valid_bit_ram'.
+Computing hashes of 8 cells of `\valid_bit_ram'.
+Finding duplicate cells in `\valid_bit_ram'.
+Finding identical cells in module `\cache_tag_ram'.
+Computing hashes of 352 cells of `\cache_tag_ram'.
+Finding duplicate cells in `\cache_tag_ram'.
+Finding identical cells in module `\cache_data_ram'.
+Computing hashes of 352 cells of `\cache_data_ram'.
+Finding duplicate cells in `\cache_data_ram'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 0 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 0 cells.
+
+13.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\memory[0]$277 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[0]).
+Adding EN signal on $memory\memory[1]$279 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[1]).
+Adding EN signal on $memory\memory[2]$281 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[2]).
+Adding EN signal on $memory\memory[3]$283 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[3]).
+Adding EN signal on $memory\memory[4]$285 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[4]).
+Adding EN signal on $memory\memory[5]$287 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[5]).
+Adding EN signal on $memory\memory[6]$289 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[6]).
+Adding EN signal on $memory\memory[7]$291 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[7]).
+Adding EN signal on $memory\memory[8]$293 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[8]).
+Adding EN signal on $memory\memory[9]$295 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[9]).
+Adding EN signal on $memory\memory[10]$297 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[10]).
+Adding EN signal on $memory\memory[11]$299 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[11]).
+Adding EN signal on $memory\memory[12]$301 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[12]).
+Adding EN signal on $memory\memory[13]$303 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[13]).
+Adding EN signal on $memory\memory[14]$305 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[14]).
+Adding EN signal on $memory\memory[15]$307 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[15]).
+Adding EN signal on $memory\memory[16]$309 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[16]).
+Adding EN signal on $memory\memory[17]$311 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[17]).
+Adding EN signal on $memory\memory[18]$313 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[18]).
+Adding EN signal on $memory\memory[19]$315 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[19]).
+Adding EN signal on $memory\memory[20]$317 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[20]).
+Adding EN signal on $memory\memory[21]$319 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[21]).
+Adding EN signal on $memory\memory[22]$321 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[22]).
+Adding EN signal on $memory\memory[23]$323 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[23]).
+Adding EN signal on $memory\memory[24]$325 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[24]).
+Adding EN signal on $memory\memory[25]$327 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[25]).
+Adding EN signal on $memory\memory[26]$329 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[26]).
+Adding EN signal on $memory\memory[27]$331 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[27]).
+Adding EN signal on $memory\memory[28]$333 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[28]).
+Adding EN signal on $memory\memory[29]$335 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[29]).
+Adding EN signal on $memory\memory[30]$337 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[30]).
+Adding EN signal on $memory\memory[31]$339 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[31]).
+Adding EN signal on $memory\memory[32]$341 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[32]).
+Adding EN signal on $memory\memory[33]$343 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[33]).
+Adding EN signal on $memory\memory[34]$345 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[34]).
+Adding EN signal on $memory\memory[35]$347 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[35]).
+Adding EN signal on $memory\memory[36]$349 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[36]).
+Adding EN signal on $memory\memory[37]$351 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[37]).
+Adding EN signal on $memory\memory[38]$353 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[38]).
+Adding EN signal on $memory\memory[39]$355 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[39]).
+Adding EN signal on $memory\memory[40]$357 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[40]).
+Adding EN signal on $memory\memory[41]$359 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[41]).
+Adding EN signal on $memory\memory[42]$361 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[42]).
+Adding EN signal on $memory\memory[43]$363 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[43]).
+Adding EN signal on $memory\memory[44]$365 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[44]).
+Adding EN signal on $memory\memory[45]$367 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[45]).
+Adding EN signal on $memory\memory[46]$369 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[46]).
+Adding EN signal on $memory\memory[47]$371 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[47]).
+Adding EN signal on $memory\memory[48]$373 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[48]).
+Adding EN signal on $memory\memory[49]$375 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[49]).
+Adding EN signal on $memory\memory[50]$377 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[50]).
+Adding EN signal on $memory\memory[51]$379 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[51]).
+Adding EN signal on $memory\memory[52]$381 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[52]).
+Adding EN signal on $memory\memory[53]$383 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[53]).
+Adding EN signal on $memory\memory[54]$385 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[54]).
+Adding EN signal on $memory\memory[55]$387 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[55]).
+Adding EN signal on $memory\memory[56]$389 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[56]).
+Adding EN signal on $memory\memory[57]$391 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[57]).
+Adding EN signal on $memory\memory[58]$393 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[58]).
+Adding EN signal on $memory\memory[59]$395 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[59]).
+Adding EN signal on $memory\memory[60]$397 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[60]).
+Adding EN signal on $memory\memory[61]$399 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[61]).
+Adding EN signal on $memory\memory[62]$401 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[62]).
+Adding EN signal on $memory\memory[63]$403 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[63]).
+Adding EN signal on $memory\memory[64]$405 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[64]).
+Adding EN signal on $memory\memory[65]$407 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[65]).
+Adding EN signal on $memory\memory[66]$409 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[66]).
+Adding EN signal on $memory\memory[67]$411 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[67]).
+Adding EN signal on $memory\memory[68]$413 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[68]).
+Adding EN signal on $memory\memory[69]$415 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[69]).
+Adding EN signal on $memory\memory[70]$417 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[70]).
+Adding EN signal on $memory\memory[71]$419 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[71]).
+Adding EN signal on $memory\memory[72]$421 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[72]).
+Adding EN signal on $memory\memory[73]$423 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[73]).
+Adding EN signal on $memory\memory[74]$425 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[74]).
+Adding EN signal on $memory\memory[75]$427 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[75]).
+Adding EN signal on $memory\memory[76]$429 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[76]).
+Adding EN signal on $memory\memory[77]$431 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[77]).
+Adding EN signal on $memory\memory[78]$433 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[78]).
+Adding EN signal on $memory\memory[79]$435 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[79]).
+Adding EN signal on $memory\memory[80]$437 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[80]).
+Adding EN signal on $memory\memory[81]$439 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[81]).
+Adding EN signal on $memory\memory[82]$441 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[82]).
+Adding EN signal on $memory\memory[83]$443 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[83]).
+Adding EN signal on $memory\memory[84]$445 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[84]).
+Adding EN signal on $memory\memory[85]$447 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[85]).
+Adding EN signal on $memory\memory[86]$449 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[86]).
+Adding EN signal on $memory\memory[87]$451 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[87]).
+Adding EN signal on $memory\memory[88]$453 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[88]).
+Adding EN signal on $memory\memory[89]$455 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[89]).
+Adding EN signal on $memory\memory[90]$457 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[90]).
+Adding EN signal on $memory\memory[91]$459 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[91]).
+Adding EN signal on $memory\memory[92]$461 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[92]).
+Adding EN signal on $memory\memory[93]$463 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[93]).
+Adding EN signal on $memory\memory[94]$465 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[94]).
+Adding EN signal on $memory\memory[95]$467 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[95]).
+Adding EN signal on $memory\memory[96]$469 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[96]).
+Adding EN signal on $memory\memory[97]$471 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[97]).
+Adding EN signal on $memory\memory[98]$473 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[98]).
+Adding EN signal on $memory\memory[99]$475 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[99]).
+Adding EN signal on $memory\memory[100]$477 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[100]).
+Adding EN signal on $memory\memory[101]$479 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[101]).
+Adding EN signal on $memory\memory[102]$481 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[102]).
+Adding EN signal on $memory\memory[103]$483 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[103]).
+Adding EN signal on $memory\memory[104]$485 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[104]).
+Adding EN signal on $memory\memory[105]$487 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[105]).
+Adding EN signal on $memory\memory[106]$489 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[106]).
+Adding EN signal on $memory\memory[107]$491 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[107]).
+Adding EN signal on $memory\memory[108]$493 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[108]).
+Adding EN signal on $memory\memory[109]$495 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[109]).
+Adding EN signal on $memory\memory[110]$497 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[110]).
+Adding EN signal on $memory\memory[111]$499 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[111]).
+Adding EN signal on $memory\memory[112]$501 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[112]).
+Adding EN signal on $memory\memory[113]$503 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[113]).
+Adding EN signal on $memory\memory[114]$505 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[114]).
+Adding EN signal on $memory\memory[115]$507 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[115]).
+Adding EN signal on $memory\memory[116]$509 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[116]).
+Adding EN signal on $memory\memory[117]$511 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[117]).
+Adding EN signal on $memory\memory[118]$513 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[118]).
+Adding EN signal on $memory\memory[119]$515 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[119]).
+Adding EN signal on $memory\memory[120]$517 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[120]).
+Adding EN signal on $memory\memory[121]$519 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[121]).
+Adding EN signal on $memory\memory[122]$521 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[122]).
+Adding EN signal on $memory\memory[123]$523 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[123]).
+Adding EN signal on $memory\memory[124]$525 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[124]).
+Adding EN signal on $memory\memory[125]$527 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[125]).
+Adding EN signal on $memory\memory[126]$529 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[126]).
+Adding EN signal on $memory\memory[127]$531 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[127]).
+Adding EN signal on $memory\memory[128]$533 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[128]).
+Adding EN signal on $memory\memory[129]$535 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[129]).
+Adding EN signal on $memory\memory[130]$537 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[130]).
+Adding EN signal on $memory\memory[131]$539 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[131]).
+Adding EN signal on $memory\memory[132]$541 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[132]).
+Adding EN signal on $memory\memory[133]$543 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[133]).
+Adding EN signal on $memory\memory[134]$545 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[134]).
+Adding EN signal on $memory\memory[135]$547 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[135]).
+Adding EN signal on $memory\memory[136]$549 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[136]).
+Adding EN signal on $memory\memory[137]$551 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[137]).
+Adding EN signal on $memory\memory[138]$553 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[138]).
+Adding EN signal on $memory\memory[139]$555 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[139]).
+Adding EN signal on $memory\memory[140]$557 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[140]).
+Adding EN signal on $memory\memory[141]$559 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[141]).
+Adding EN signal on $memory\memory[142]$561 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[142]).
+Adding EN signal on $memory\memory[143]$563 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[143]).
+Adding EN signal on $memory\memory[144]$565 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[144]).
+Adding EN signal on $memory\memory[145]$567 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[145]).
+Adding EN signal on $memory\memory[146]$569 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[146]).
+Adding EN signal on $memory\memory[147]$571 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[147]).
+Adding EN signal on $memory\memory[148]$573 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[148]).
+Adding EN signal on $memory\memory[149]$575 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[149]).
+Adding EN signal on $memory\memory[150]$577 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[150]).
+Adding EN signal on $memory\memory[151]$579 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[151]).
+Adding EN signal on $memory\memory[152]$581 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[152]).
+Adding EN signal on $memory\memory[153]$583 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[153]).
+Adding EN signal on $memory\memory[154]$585 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[154]).
+Adding EN signal on $memory\memory[155]$587 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[155]).
+Adding EN signal on $memory\memory[156]$589 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[156]).
+Adding EN signal on $memory\memory[157]$591 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[157]).
+Adding EN signal on $memory\memory[158]$593 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[158]).
+Adding EN signal on $memory\memory[159]$595 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[159]).
+Adding EN signal on $memory\memory[160]$597 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[160]).
+Adding EN signal on $memory\memory[161]$599 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[161]).
+Adding EN signal on $memory\memory[162]$601 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[162]).
+Adding EN signal on $memory\memory[163]$603 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[163]).
+Adding EN signal on $memory\memory[164]$605 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[164]).
+Adding EN signal on $memory\memory[165]$607 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[165]).
+Adding EN signal on $memory\memory[166]$609 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[166]).
+Adding EN signal on $memory\memory[167]$611 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[167]).
+Adding EN signal on $memory\memory[168]$613 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[168]).
+Adding EN signal on $memory\memory[169]$615 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[169]).
+Adding EN signal on $memory\memory[170]$617 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[170]).
+Adding EN signal on $memory\memory[171]$619 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[171]).
+Adding EN signal on $memory\memory[172]$621 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[172]).
+Adding EN signal on $memory\memory[173]$623 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[173]).
+Adding EN signal on $memory\memory[174]$625 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[174]).
+Adding EN signal on $memory\memory[175]$627 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[175]).
+Adding EN signal on $memory\memory[176]$629 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[176]).
+Adding EN signal on $memory\memory[177]$631 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[177]).
+Adding EN signal on $memory\memory[178]$633 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[178]).
+Adding EN signal on $memory\memory[179]$635 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[179]).
+Adding EN signal on $memory\memory[180]$637 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[180]).
+Adding EN signal on $memory\memory[181]$639 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[181]).
+Adding EN signal on $memory\memory[182]$641 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[182]).
+Adding EN signal on $memory\memory[183]$643 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[183]).
+Adding EN signal on $memory\memory[184]$645 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[184]).
+Adding EN signal on $memory\memory[185]$647 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[185]).
+Adding EN signal on $memory\memory[186]$649 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[186]).
+Adding EN signal on $memory\memory[187]$651 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[187]).
+Adding EN signal on $memory\memory[188]$653 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[188]).
+Adding EN signal on $memory\memory[189]$655 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[189]).
+Adding EN signal on $memory\memory[190]$657 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[190]).
+Adding EN signal on $memory\memory[191]$659 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[191]).
+Adding EN signal on $memory\memory[192]$661 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[192]).
+Adding EN signal on $memory\memory[193]$663 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[193]).
+Adding EN signal on $memory\memory[194]$665 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[194]).
+Adding EN signal on $memory\memory[195]$667 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[195]).
+Adding EN signal on $memory\memory[196]$669 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[196]).
+Adding EN signal on $memory\memory[197]$671 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[197]).
+Adding EN signal on $memory\memory[198]$673 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[198]).
+Adding EN signal on $memory\memory[199]$675 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[199]).
+Adding EN signal on $memory\memory[200]$677 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[200]).
+Adding EN signal on $memory\memory[201]$679 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[201]).
+Adding EN signal on $memory\memory[202]$681 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[202]).
+Adding EN signal on $memory\memory[203]$683 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[203]).
+Adding EN signal on $memory\memory[204]$685 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[204]).
+Adding EN signal on $memory\memory[205]$687 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[205]).
+Adding EN signal on $memory\memory[206]$689 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[206]).
+Adding EN signal on $memory\memory[207]$691 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[207]).
+Adding EN signal on $memory\memory[208]$693 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[208]).
+Adding EN signal on $memory\memory[209]$695 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[209]).
+Adding EN signal on $memory\memory[210]$697 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[210]).
+Adding EN signal on $memory\memory[211]$699 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[211]).
+Adding EN signal on $memory\memory[212]$701 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[212]).
+Adding EN signal on $memory\memory[213]$703 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[213]).
+Adding EN signal on $memory\memory[214]$705 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[214]).
+Adding EN signal on $memory\memory[215]$707 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[215]).
+Adding EN signal on $memory\memory[216]$709 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[216]).
+Adding EN signal on $memory\memory[217]$711 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[217]).
+Adding EN signal on $memory\memory[218]$713 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[218]).
+Adding EN signal on $memory\memory[219]$715 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[219]).
+Adding EN signal on $memory\memory[220]$717 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[220]).
+Adding EN signal on $memory\memory[221]$719 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[221]).
+Adding EN signal on $memory\memory[222]$721 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[222]).
+Adding EN signal on $memory\memory[223]$723 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[223]).
+Adding EN signal on $memory\memory[224]$725 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[224]).
+Adding EN signal on $memory\memory[225]$727 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[225]).
+Adding EN signal on $memory\memory[226]$729 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[226]).
+Adding EN signal on $memory\memory[227]$731 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[227]).
+Adding EN signal on $memory\memory[228]$733 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[228]).
+Adding EN signal on $memory\memory[229]$735 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[229]).
+Adding EN signal on $memory\memory[230]$737 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[230]).
+Adding EN signal on $memory\memory[231]$739 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[231]).
+Adding EN signal on $memory\memory[232]$741 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[232]).
+Adding EN signal on $memory\memory[233]$743 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[233]).
+Adding EN signal on $memory\memory[234]$745 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[234]).
+Adding EN signal on $memory\memory[235]$747 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[235]).
+Adding EN signal on $memory\memory[236]$749 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[236]).
+Adding EN signal on $memory\memory[237]$751 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[237]).
+Adding EN signal on $memory\memory[238]$753 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[238]).
+Adding EN signal on $memory\memory[239]$755 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[239]).
+Adding EN signal on $memory\memory[240]$757 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[240]).
+Adding EN signal on $memory\memory[241]$759 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[241]).
+Adding EN signal on $memory\memory[242]$761 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[242]).
+Adding EN signal on $memory\memory[243]$763 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[243]).
+Adding EN signal on $memory\memory[244]$765 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[244]).
+Adding EN signal on $memory\memory[245]$767 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[245]).
+Adding EN signal on $memory\memory[246]$769 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[246]).
+Adding EN signal on $memory\memory[247]$771 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[247]).
+Adding EN signal on $memory\memory[248]$773 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[248]).
+Adding EN signal on $memory\memory[249]$775 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[249]).
+Adding EN signal on $memory\memory[250]$777 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[250]).
+Adding EN signal on $memory\memory[251]$779 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[251]).
+Adding EN signal on $memory\memory[252]$781 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[252]).
+Adding EN signal on $memory\memory[253]$783 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[253]).
+Adding EN signal on $memory\memory[254]$785 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[254]).
+Adding EN signal on $memory\memory[255]$787 ($dff) from module main_memory (D = $0$memwr$\memory$rtl/main_memory.v:22$36_DATA[127:0]$40, Q = \memory[255]).
+Adding EN signal on $memory\tag_mem[0]$3218 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[0]).
+Adding EN signal on $memory\tag_mem[1]$3220 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[1]).
+Adding EN signal on $memory\tag_mem[2]$3222 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[2]).
+Adding EN signal on $memory\tag_mem[3]$3224 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[3]).
+Adding EN signal on $memory\tag_mem[4]$3226 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[4]).
+Adding EN signal on $memory\tag_mem[5]$3228 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[5]).
+Adding EN signal on $memory\tag_mem[6]$3230 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[6]).
+Adding EN signal on $memory\tag_mem[7]$3232 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[7]).
+Adding EN signal on $memory\tag_mem[8]$3234 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[8]).
+Adding EN signal on $memory\tag_mem[9]$3236 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[9]).
+Adding EN signal on $memory\tag_mem[10]$3238 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[10]).
+Adding EN signal on $memory\tag_mem[11]$3240 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[11]).
+Adding EN signal on $memory\tag_mem[12]$3242 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[12]).
+Adding EN signal on $memory\tag_mem[13]$3244 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[13]).
+Adding EN signal on $memory\tag_mem[14]$3246 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[14]).
+Adding EN signal on $memory\tag_mem[15]$3248 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[15]).
+Adding EN signal on $memory\tag_mem[16]$3250 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[16]).
+Adding EN signal on $memory\tag_mem[17]$3252 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[17]).
+Adding EN signal on $memory\tag_mem[18]$3254 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[18]).
+Adding EN signal on $memory\tag_mem[19]$3256 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[19]).
+Adding EN signal on $memory\tag_mem[20]$3258 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[20]).
+Adding EN signal on $memory\tag_mem[21]$3260 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[21]).
+Adding EN signal on $memory\tag_mem[22]$3262 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[22]).
+Adding EN signal on $memory\tag_mem[23]$3264 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[23]).
+Adding EN signal on $memory\tag_mem[24]$3266 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[24]).
+Adding EN signal on $memory\tag_mem[25]$3268 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[25]).
+Adding EN signal on $memory\tag_mem[26]$3270 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[26]).
+Adding EN signal on $memory\tag_mem[27]$3272 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[27]).
+Adding EN signal on $memory\tag_mem[28]$3274 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[28]).
+Adding EN signal on $memory\tag_mem[29]$3276 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[29]).
+Adding EN signal on $memory\tag_mem[30]$3278 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[30]).
+Adding EN signal on $memory\tag_mem[31]$3280 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[31]).
+Adding EN signal on $memory\tag_mem[32]$3282 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[32]).
+Adding EN signal on $memory\tag_mem[33]$3284 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[33]).
+Adding EN signal on $memory\tag_mem[34]$3286 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[34]).
+Adding EN signal on $memory\tag_mem[35]$3288 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[35]).
+Adding EN signal on $memory\tag_mem[36]$3290 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[36]).
+Adding EN signal on $memory\tag_mem[37]$3292 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[37]).
+Adding EN signal on $memory\tag_mem[38]$3294 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[38]).
+Adding EN signal on $memory\tag_mem[39]$3296 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[39]).
+Adding EN signal on $memory\tag_mem[40]$3298 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[40]).
+Adding EN signal on $memory\tag_mem[41]$3300 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[41]).
+Adding EN signal on $memory\tag_mem[42]$3302 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[42]).
+Adding EN signal on $memory\tag_mem[43]$3304 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[43]).
+Adding EN signal on $memory\tag_mem[44]$3306 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[44]).
+Adding EN signal on $memory\tag_mem[45]$3308 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[45]).
+Adding EN signal on $memory\tag_mem[46]$3310 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[46]).
+Adding EN signal on $memory\tag_mem[47]$3312 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[47]).
+Adding EN signal on $memory\tag_mem[48]$3314 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[48]).
+Adding EN signal on $memory\tag_mem[49]$3316 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[49]).
+Adding EN signal on $memory\tag_mem[50]$3318 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[50]).
+Adding EN signal on $memory\tag_mem[51]$3320 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[51]).
+Adding EN signal on $memory\tag_mem[52]$3322 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[52]).
+Adding EN signal on $memory\tag_mem[53]$3324 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[53]).
+Adding EN signal on $memory\tag_mem[54]$3326 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[54]).
+Adding EN signal on $memory\tag_mem[55]$3328 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[55]).
+Adding EN signal on $memory\tag_mem[56]$3330 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[56]).
+Adding EN signal on $memory\tag_mem[57]$3332 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[57]).
+Adding EN signal on $memory\tag_mem[58]$3334 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[58]).
+Adding EN signal on $memory\tag_mem[59]$3336 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[59]).
+Adding EN signal on $memory\tag_mem[60]$3338 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[60]).
+Adding EN signal on $memory\tag_mem[61]$3340 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[61]).
+Adding EN signal on $memory\tag_mem[62]$3342 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[62]).
+Adding EN signal on $memory\tag_mem[63]$3344 ($dff) from module cache_tag_ram (D = $0$memwr$\tag_mem$rtl/cache_tag_ram.v:18$10_DATA[21:0]$14, Q = \tag_mem[63]).
+Adding EN signal on $memory\data_mem[0]$3991 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[0]).
+Adding EN signal on $memory\data_mem[1]$3993 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[1]).
+Adding EN signal on $memory\data_mem[2]$3995 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[2]).
+Adding EN signal on $memory\data_mem[3]$3997 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[3]).
+Adding EN signal on $memory\data_mem[4]$3999 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[4]).
+Adding EN signal on $memory\data_mem[5]$4001 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[5]).
+Adding EN signal on $memory\data_mem[6]$4003 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[6]).
+Adding EN signal on $memory\data_mem[7]$4005 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[7]).
+Adding EN signal on $memory\data_mem[8]$4007 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[8]).
+Adding EN signal on $memory\data_mem[9]$4009 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[9]).
+Adding EN signal on $memory\data_mem[10]$4011 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[10]).
+Adding EN signal on $memory\data_mem[11]$4013 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[11]).
+Adding EN signal on $memory\data_mem[12]$4015 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[12]).
+Adding EN signal on $memory\data_mem[13]$4017 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[13]).
+Adding EN signal on $memory\data_mem[14]$4019 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[14]).
+Adding EN signal on $memory\data_mem[15]$4021 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[15]).
+Adding EN signal on $memory\data_mem[16]$4023 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[16]).
+Adding EN signal on $memory\data_mem[17]$4025 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[17]).
+Adding EN signal on $memory\data_mem[18]$4027 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[18]).
+Adding EN signal on $memory\data_mem[19]$4029 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[19]).
+Adding EN signal on $memory\data_mem[20]$4031 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[20]).
+Adding EN signal on $memory\data_mem[21]$4033 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[21]).
+Adding EN signal on $memory\data_mem[22]$4035 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[22]).
+Adding EN signal on $memory\data_mem[23]$4037 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[23]).
+Adding EN signal on $memory\data_mem[24]$4039 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[24]).
+Adding EN signal on $memory\data_mem[25]$4041 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[25]).
+Adding EN signal on $memory\data_mem[26]$4043 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[26]).
+Adding EN signal on $memory\data_mem[27]$4045 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[27]).
+Adding EN signal on $memory\data_mem[28]$4047 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[28]).
+Adding EN signal on $memory\data_mem[29]$4049 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[29]).
+Adding EN signal on $memory\data_mem[30]$4051 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[30]).
+Adding EN signal on $memory\data_mem[31]$4053 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[31]).
+Adding EN signal on $memory\data_mem[32]$4055 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[32]).
+Adding EN signal on $memory\data_mem[33]$4057 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[33]).
+Adding EN signal on $memory\data_mem[34]$4059 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[34]).
+Adding EN signal on $memory\data_mem[35]$4061 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[35]).
+Adding EN signal on $memory\data_mem[36]$4063 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[36]).
+Adding EN signal on $memory\data_mem[37]$4065 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[37]).
+Adding EN signal on $memory\data_mem[38]$4067 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[38]).
+Adding EN signal on $memory\data_mem[39]$4069 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[39]).
+Adding EN signal on $memory\data_mem[40]$4071 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[40]).
+Adding EN signal on $memory\data_mem[41]$4073 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[41]).
+Adding EN signal on $memory\data_mem[42]$4075 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[42]).
+Adding EN signal on $memory\data_mem[43]$4077 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[43]).
+Adding EN signal on $memory\data_mem[44]$4079 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[44]).
+Adding EN signal on $memory\data_mem[45]$4081 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[45]).
+Adding EN signal on $memory\data_mem[46]$4083 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[46]).
+Adding EN signal on $memory\data_mem[47]$4085 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[47]).
+Adding EN signal on $memory\data_mem[48]$4087 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[48]).
+Adding EN signal on $memory\data_mem[49]$4089 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[49]).
+Adding EN signal on $memory\data_mem[50]$4091 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[50]).
+Adding EN signal on $memory\data_mem[51]$4093 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[51]).
+Adding EN signal on $memory\data_mem[52]$4095 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[52]).
+Adding EN signal on $memory\data_mem[53]$4097 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[53]).
+Adding EN signal on $memory\data_mem[54]$4099 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[54]).
+Adding EN signal on $memory\data_mem[55]$4101 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[55]).
+Adding EN signal on $memory\data_mem[56]$4103 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[56]).
+Adding EN signal on $memory\data_mem[57]$4105 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[57]).
+Adding EN signal on $memory\data_mem[58]$4107 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[58]).
+Adding EN signal on $memory\data_mem[59]$4109 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[59]).
+Adding EN signal on $memory\data_mem[60]$4111 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[60]).
+Adding EN signal on $memory\data_mem[61]$4113 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[61]).
+Adding EN signal on $memory\data_mem[62]$4115 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[62]).
+Adding EN signal on $memory\data_mem[63]$4117 ($dff) from module cache_data_ram (D = $0$memwr$\data_mem$rtl/cache_data_ram.v:21$1_DATA[127:0]$5, Q = \data_mem[63]).
+
+13.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cache_top..
+Finding unused cells or wires in module \cache_controller..
+Finding unused cells or wires in module \tag_comparator..
+Finding unused cells or wires in module \main_memory..
+Finding unused cells or wires in module \valid_bit_ram..
+Finding unused cells or wires in module \cache_tag_ram..
+Finding unused cells or wires in module \cache_data_ram..
+Finding unused cells or wires in module \address_decoder..
+Removed 384 unused cells and 384 unused wires.
+<suppressed ~387 debug messages>
+
+13.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cache_top.
+Optimizing module cache_controller.
+Optimizing module tag_comparator.
+Optimizing module main_memory.
+Optimizing module valid_bit_ram.
+Optimizing module cache_tag_ram.
+Optimizing module cache_data_ram.
+Optimizing module address_decoder.
+
+13.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+13.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \cache_top..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \tag_comparator..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \main_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \valid_bit_ram..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \cache_tag_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \cache_data_ram..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module \address_decoder..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~426 debug messages>
+
+13.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \cache_top.
+  Optimizing cells in module \cache_controller.
+  Optimizing cells in module \tag_comparator.
+  Optimizing cells in module \main_memory.
+  Optimizing cells in module \valid_bit_ram.
+  Optimizing cells in module \cache_tag_ram.
+  Optimizing cells in module \cache_data_ram.
+  Optimizing cells in module \address_decoder.
+Performed a total of 0 changes.
+
+13.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\cache_top'.
+Computing hashes of 37 cells of `\cache_top'.
+Finding duplicate cells in `\cache_top'.
+Finding identical cells in module `\cache_controller'.
+Computing hashes of 19 cells of `\cache_controller'.
+Finding duplicate cells in `\cache_controller'.
+Finding identical cells in module `\tag_comparator'.
+Computing hashes of 3 cells of `\tag_comparator'.
+Finding duplicate cells in `\tag_comparator'.
+Finding identical cells in module `\main_memory'.
+Computing hashes of 1082 cells of `\main_memory'.
+Finding duplicate cells in `\main_memory'.
+Finding identical cells in module `\valid_bit_ram'.
+Computing hashes of 8 cells of `\valid_bit_ram'.
+Finding duplicate cells in `\valid_bit_ram'.
+Finding identical cells in module `\cache_tag_ram'.
+Computing hashes of 288 cells of `\cache_tag_ram'.
+Finding duplicate cells in `\cache_tag_ram'.
+Finding identical cells in module `\cache_data_ram'.
+Computing hashes of 288 cells of `\cache_data_ram'.
+Finding duplicate cells in `\cache_data_ram'.
+Finding identical cells in module `\address_decoder'.
+Computing hashes of 0 cells of `\address_decoder'.
+Finding duplicate cells in `\address_decoder'.
+Removed a total of 0 cells.
+
+13.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+13.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \cache_top..
+Finding unused cells or wires in module \cache_controller..
+Finding unused cells or wires in module \tag_comparator..
+Finding unused cells or wires in module \main_memory..
+Finding unused cells or wires in module \valid_bit_ram..
+Finding unused cells or wires in module \cache_tag_ram..
+Finding unused cells or wires in module \cache_data_ram..
+Finding unused cells or wires in module \address_decoder..
+
+13.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module cache_top.
+Optimizing module cache_controller.
+Optimizing module tag_comparator.
+Optimizing module main_memory.
+Optimizing module valid_bit_ram.
+Optimizing module cache_tag_ram.
+Optimizing module cache_data_ram.
+Optimizing module address_decoder.
+
+13.23. Finished fast OPT passes. (There is nothing left to do.)
+
+14. Printing statistics.
+
+=== cache_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       46 wires
+      925 wire bits
+       30 public wires
+      776 public wire bits
+       10 ports
+      103 port bits
+       30 cells
+        1   $add
+        4   $adffe
+        4   $eq
+        1   $logic_and
+        2   $logic_not
+        1   $lt
+        3   $mux
+        1   $ne
+        9   $pmux
+        4   $reduce_or
+        7 submodules
+        1   address_decoder
+        1   cache_controller
+        1   cache_data_ram
+        1   cache_tag_ram
+        1   main_memory
+        1   tag_comparator
+        1   valid_bit_ram
+
+=== cache_controller ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       26 wires
+       36 wire bits
+       15 public wires
+       19 public wire bits
+       12 ports
+       12 port bits
+       19 cells
+        2   $adffe
+        4   $eq
+        2   $logic_and
+        1   $logic_not
+        2   $logic_or
+        3   $mux
+        2   $ne
+        1   $pmux
+        1   $reduce_and
+        1   $reduce_bool
+
+=== tag_comparator ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        6 wires
+       48 wire bits
+        5 public wires
+       47 public wire bits
+        5 ports
+       47 port bits
+        3 cells
+        1   $eq
+        1   $logic_and
+        1   $not
+
+=== main_memory ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1086 wires
+    66378 wire bits
+      261 public wires
+    33034 public wire bits
+        5 ports
+      266 port bits
+     1082 cells
+      560   $and
+      256   $dffe
+      258   $mux
+        8   $not
+
+=== valid_bit_ram ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       13 wires
+      402 wire bits
+        7 public wires
+       75 public wire bits
+        6 ports
+       11 port bits
+        8 cells
+        1   $adffe
+        1   $and
+        1   $neg
+        1   $not
+        1   $or
+        2   $shift
+        1   $shiftx
+
+=== cache_tag_ram ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      292 wires
+     3032 wire bits
+       69 public wires
+     1460 public wire bits
+        5 ports
+       52 port bits
+      288 cells
+      152   $and
+       64   $dffe
+       66   $mux
+        6   $not
+
+=== cache_data_ram ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      292 wires
+    16812 wire bits
+       69 public wires
+     8456 public wire bits
+        5 ports
+      264 port bits
+      288 cells
+      152   $and
+       64   $dffe
+       66   $mux
+        6   $not
+
+=== address_decoder ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        4 wires
+       64 wire bits
+        4 public wires
+       64 public wire bits
+        4 ports
+       64 port bits
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+     1718 cache_top
+       19 cache_controller
+      288 cache_data_ram
+      288 cache_tag_ram
+     1082 main_memory
+        3 tag_comparator
+        8 valid_bit_ram
+
+        +----------Count including submodules.
+        | 
+     1765 wires
+    87697 wire bits
+      460 public wires
+    43931 public wire bits
+       52 ports
+      819 port bits
+        - memories
+        - memory bits
+        - processes
+     1718 cells
+        1   $add
+        7   $adffe
+      865   $and
+      384   $dffe
+        9   $eq
+        4   $logic_and
+        3   $logic_not
+        2   $logic_or
+        1   $lt
+      396   $mux
+        3   $ne
+        1   $neg
+       22   $not
+        1   $or
+       10   $pmux
+        1   $reduce_and
+        1   $reduce_bool
+        4   $reduce_or
+        2   $shift
+        1   $shiftx
+        7 submodules
+        1   address_decoder
+        1   cache_controller
+        1   cache_data_ram
+        1   cache_tag_ram
+        1   main_memory
+        1   tag_comparator
+        1   valid_bit_ram
+
+End of script. Logfile hash: 9c1a513a76, time: 0.43s, user: 0.39s, system: 0.03s, MEM: 100.97 MB peak
+Yosys 0.70+post (git sha1 0c11ea098be065e585a90a06e7b7da49936cf231, Release, AppleClang clang++ 21.0.0.21000334)
+Time spent: 32% 7x opt_clean (0 sec), 25% 8x opt_expr (0 sec), ...

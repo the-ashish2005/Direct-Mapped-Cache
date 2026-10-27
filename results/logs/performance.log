@@ -1,0 +1,37 @@
+VCD info: dumpfile results/waveforms/cache_performance.vcd opened for output.
+CACHE PERFORMANCE BENCHMARK
+-----------------------------------------
+Workload: Repeated
+Requests : 32
+Hits     : 31
+Misses   : 1
+Hit Rate : 96.88%
+Miss Rate: 3.12%
+Avg Cycles: 2.16
+-----------------------------------------
+Workload: Sequential
+Requests : 64
+Hits     : 48
+Misses   : 16
+Hit Rate : 75.00%
+Miss Rate: 25.00%
+Avg Cycles: 3.25
+-----------------------------------------
+Workload: Conflict
+Requests : 32
+Hits     : 0
+Misses   : 32
+Hit Rate : 0.00%
+Miss Rate: 100.00%
+Avg Cycles: 7.00
+-----------------------------------------
+Workload: PseudoRandom
+Requests : 64
+Hits     : 0
+Misses   : 64
+Hit Rate : 0.00%
+Miss Rate: 100.00%
+Avg Cycles: 7.00
+-----------------------------------------
+Benchmark completed successfully.
+testbench/tb_cache_performance.v:213: $finish called at 13420000 (1ps)

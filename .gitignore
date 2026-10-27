@@ -1,0 +1,15 @@
+# Python environment
+.venv/
+__pycache__/
+*.pyc
+
+# Simulation executables
+results/*_sim
+*.vvp
+
+# Temporary files
+.DS_Store
+*.swp
+
+# Yosys temporary files
+*.ys.bak
