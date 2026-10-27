@@ -1,0 +1,200 @@
+$date
+	Tue Oct 27 11:21:15 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_cache_controller $end
+$var wire 1 ! mem_req $end
+$var wire 1 " cpu_ready $end
+$var wire 1 # cpu_hit $end
+$var wire 1 $ cache_write_enable $end
+$var wire 1 % busy $end
+$var reg 1 & cache_hit $end
+$var reg 1 ' clk $end
+$var reg 1 ( cpu_req $end
+$var reg 1 ) mem_ready $end
+$var reg 1 * reset $end
+$var integer 32 + passed [31:0] $end
+$var integer 32 , tests [31:0] $end
+$scope module dut $end
+$var wire 1 & cache_hit $end
+$var wire 1 ' clk $end
+$var wire 1 # cpu_hit $end
+$var wire 1 ( cpu_req $end
+$var wire 1 ) mem_ready $end
+$var wire 1 * reset $end
+$var wire 1 ! mem_req $end
+$var wire 1 " cpu_ready $end
+$var wire 1 $ cache_write_enable $end
+$var wire 1 % busy $end
+$var parameter 3 - IDLE $end
+$var parameter 3 . LOOKUP $end
+$var parameter 3 / MISS_WAIT $end
+$var parameter 3 0 REFILL $end
+$var parameter 3 1 RESPOND $end
+$var reg 1 2 hit_result $end
+$var reg 3 3 next_state [2:0] $end
+$var reg 3 4 state [2:0] $end
+$upscope $end
+$scope task check_request $end
+$var reg 1 5 hit_expected $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b100 1
+b11 0
+b10 /
+b1 .
+b0 -
+$end
+#0
+$dumpvars
+x5
+b0 4
+b0 3
+02
+b0 ,
+b0 +
+1*
+0)
+0(
+0'
+0&
+0%
+0$
+0#
+0"
+0!
+$end
+#5000
+1'
+#10000
+0'
+#12000
+15
+0*
+#15000
+1'
+#20000
+b1 3
+1(
+1&
+0'
+#25000
+b100 3
+1%
+b1 4
+1'
+#30000
+b100 3
+0(
+0'
+#35000
+b0 3
+1"
+b100 4
+1#
+12
+1'
+#36000
+b1 +
+b1 ,
+#40000
+0'
+#45000
+0"
+0%
+b0 4
+1'
+#46000
+05
+#50000
+b1 3
+1(
+0&
+0'
+#55000
+b10 3
+1%
+b1 4
+1'
+#60000
+b10 3
+0(
+0'
+#65000
+0#
+02
+1!
+b10 4
+1'
+#70000
+b11 3
+1)
+0'
+#75000
+b100 3
+0!
+1$
+b11 4
+1'
+#80000
+b100 3
+0)
+0'
+#85000
+b0 3
+0$
+1"
+b100 4
+1'
+#86000
+b10 +
+b10 ,
+#90000
+0'
+#95000
+0"
+0%
+b0 4
+1'
+#96000
+15
+#100000
+b1 3
+1(
+1&
+0'
+#105000
+b100 3
+1%
+b1 4
+1'
+#110000
+b100 3
+0(
+0'
+#115000
+b0 3
+1"
+b100 4
+1#
+12
+1'
+#116000
+b11 +
+b11 ,
+#120000
+0'
+#125000
+0"
+0%
+b0 4
+1'
+#126000
