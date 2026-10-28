@@ -1,0 +1,125 @@
+$date
+	Mon Oct 26 22:04:05 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_address_decoder $end
+$var wire 22 ! tag [21:0] $end
+$var wire 4 " offset [3:0] $end
+$var wire 6 # index [5:0] $end
+$var reg 32 $ address [31:0] $end
+$var integer 32 % pass_count [31:0] $end
+$var integer 32 & test_count [31:0] $end
+$scope module dut $end
+$var wire 32 ' address [31:0] $end
+$var wire 22 ( tag [21:0] $end
+$var wire 4 ) offset [3:0] $end
+$var wire 6 * index [5:0] $end
+$upscope $end
+$scope task check_address $end
+$var reg 6 + expected_index [5:0] $end
+$var reg 4 , expected_offset [3:0] $end
+$var reg 22 - expected_tag [21:0] $end
+$var reg 32 . test_address [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 .
+b0 -
+b0 ,
+b0 +
+b0 *
+b0 )
+b0 (
+b0 '
+b0 &
+b0 %
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#10000
+b1111 "
+b1111 )
+b1111 $
+b1111 '
+b1111 ,
+b1111 .
+b1 %
+b1 &
+#20000
+b1 #
+b1 *
+b0 "
+b0 )
+b10000 $
+b10000 '
+b0 ,
+b1 +
+b10000 .
+b10 %
+b10 &
+#30000
+b100 #
+b100 *
+b1000000 $
+b1000000 '
+b100 +
+b1000000 .
+b11 %
+b11 &
+#40000
+b1 !
+b1 (
+b0 #
+b0 *
+b10000000000 $
+b10000000000 '
+b0 +
+b1 -
+b10000000000 .
+b100 %
+b100 &
+#50000
+b1001000110100010101 !
+b1001000110100010101 (
+b100111 #
+b100111 *
+b1000 "
+b1000 )
+b10010001101000101011001111000 $
+b10010001101000101011001111000 '
+b1000 ,
+b100111 +
+b1001000110100010101 -
+b10010001101000101011001111000 .
+b101 %
+b101 &
+#60000
+b1111111111111111111111 !
+b1111111111111111111111 (
+b111111 #
+b111111 *
+b1111 "
+b1111 )
+b11111111111111111111111111111111 $
+b11111111111111111111111111111111 '
+b1111 ,
+b111111 +
+b1111111111111111111111 -
+b11111111111111111111111111111111 .
+b110 %
+b110 &
+#70000
+b111 %
+b111 &
