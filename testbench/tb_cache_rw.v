@@ -71,7 +71,10 @@ module tb_cache_rw;
             @(negedge clk);
             cpu_req = 1'b0;
 
-            cycles = 0;
+            // Cycle 1 is the cycle in which the request was
+            // accepted. The same convention is used by
+            // tb_cache_performance so latencies are comparable.
+            cycles = 1;
 
             // Wait for response with timeout
             while (cpu_ready !== 1'b1 && cycles < 20) begin

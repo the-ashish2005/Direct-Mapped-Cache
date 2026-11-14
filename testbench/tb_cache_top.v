@@ -31,7 +31,9 @@ module tb_cache_top;
         .clk(clk),
         .reset(reset),
         .cpu_req(cpu_req),
+        .cpu_write(1'b0),        // read-only integration test
         .cpu_address(cpu_address),
+        .cpu_write_data(32'b0),  // writes covered by tb_cache_rw
         .cpu_read_data(cpu_read_data),
         .cpu_ready(cpu_ready),
         .cpu_hit(cpu_hit),
@@ -64,7 +66,7 @@ module tb_cache_top;
             @(negedge clk);
             cpu_req = 1'b0;
 
-            cycles = 0;
+            cycles = 1;
 
             // Wait for CPU response
             while (cpu_ready !== 1'b1 && cycles < 20) begin
