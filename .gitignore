@@ -7,9 +7,10 @@ __pycache__/
 results/*_sim
 *.vvp
 
-# Temporary files
+# OS / editor noise
 .DS_Store
 *.swp
+*~
 
 # Yosys temporary files
 *.ys.bak

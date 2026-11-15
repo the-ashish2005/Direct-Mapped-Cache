@@ -1,0 +1,21 @@
+# Yosys generic synthesis script for the direct-mapped cache.
+#
+# This performs technology-independent synthesis only: the cell
+# counts it reports are generic RTLIL cells, not FPGA LUTs or
+# ASIC standard cells, and no timing closure is implied.
+
+read_verilog rtl/address_decoder.v
+read_verilog rtl/cache_data_ram.v
+read_verilog rtl/cache_tag_ram.v
+read_verilog rtl/valid_bit_ram.v
+read_verilog rtl/main_memory.v
+read_verilog rtl/tag_comparator.v
+read_verilog rtl/cache_controller.v
+read_verilog rtl/cache_top.v
+
+hierarchy -check -top cache_top
+proc
+opt
+memory
+opt
+stat
