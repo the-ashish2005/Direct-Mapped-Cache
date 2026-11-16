@@ -1,37 +1,91 @@
 VCD info: dumpfile results/waveforms/cache_performance.vcd opened for output.
-CACHE PERFORMANCE BENCHMARK
+=========================================
+ HARDWARE TIMING CALIBRATION
+=========================================
+Clock period        : 10.0 ns
+Hit time            : 2.00 cycles (20.0 ns)
+Miss latency        : 7.00 cycles
+Miss penalty        : 5.00 cycles (50.0 ns)
+AMAT = HitTime + MissRate x MissPenalty
+
+=========================================
+ CACHE PERFORMANCE BENCHMARK
+=========================================
 -----------------------------------------
-Workload: Repeated
-Requests : 32
-Hits     : 31
-Misses   : 1
-Hit Rate : 96.88%
-Miss Rate: 3.12%
-Avg Cycles: 2.16
+Workload   : Repeated
+Pattern    : same address repeated 32 times
+Requests   : 32  (reads 32, writes 0)
+Read hits  : 31
+Read misses: 1
+Hit Rate   : 96.88%
+Miss Rate  : 3.12%
+AMAT       : 2.156 cycles (21.56 ns)
+  = 2.00 + 0.0312 x 5.00
+Measured   : 2.156 cycles  [model verified]
+Avg cycles : 2.16 (all accesses)
 -----------------------------------------
-Workload: Sequential
-Requests : 64
-Hits     : 48
-Misses   : 16
-Hit Rate : 75.00%
-Miss Rate: 25.00%
-Avg Cycles: 3.25
+Workload   : Sequential
+Pattern    : 64 consecutive 32-bit words
+Requests   : 64  (reads 64, writes 0)
+Read hits  : 48
+Read misses: 16
+Hit Rate   : 75.00%
+Miss Rate  : 25.00%
+AMAT       : 3.250 cycles (32.50 ns)
+  = 2.00 + 0.2500 x 5.00
+Measured   : 3.250 cycles  [model verified]
+Avg cycles : 3.25 (all accesses)
 -----------------------------------------
-Workload: Conflict
-Requests : 32
-Hits     : 0
-Misses   : 32
-Hit Rate : 0.00%
-Miss Rate: 100.00%
-Avg Cycles: 7.00
+Workload   : Conflict
+Pattern    : two blocks mapping to one line
+Requests   : 32  (reads 32, writes 0)
+Read hits  : 0
+Read misses: 32
+Hit Rate   : 0.00%
+Miss Rate  : 100.00%
+AMAT       : 7.000 cycles (70.00 ns)
+  = 2.00 + 1.0000 x 5.00
+Measured   : 7.000 cycles  [model verified]
+Avg cycles : 7.00 (all accesses)
 -----------------------------------------
-Workload: PseudoRandom
-Requests : 64
-Hits     : 0
-Misses   : 64
-Hit Rate : 0.00%
-Miss Rate: 100.00%
-Avg Cycles: 7.00
+Workload   : PseudoRandom
+Pattern    : random over full 4 KB range
+Requests   : 128  (reads 128, writes 0)
+Read hits  : 20
+Read misses: 108
+Hit Rate   : 15.62%
+Miss Rate  : 84.38%
+AMAT       : 6.219 cycles (62.19 ns)
+  = 2.00 + 0.8438 x 5.00
+Measured   : 6.219 cycles  [model verified]
+Avg cycles : 6.22 (all accesses)
+-----------------------------------------
+Workload   : WorkingSet
+Pattern    : random within a 512 B working set
+Requests   : 128  (reads 128, writes 0)
+Read hits  : 96
+Read misses: 32
+Hit Rate   : 75.00%
+Miss Rate  : 25.00%
+AMAT       : 3.250 cycles (32.50 ns)
+  = 2.00 + 0.2500 x 5.00
+Measured   : 3.250 cycles  [model verified]
+Avg cycles : 3.25 (all accesses)
+-----------------------------------------
+Workload   : ReadWriteMix
+Pattern    : read/write mix (write-through)
+Requests   : 64  (reads 48, writes 16)
+Read hits  : 32
+Read misses: 16
+Hit Rate   : 66.67%
+Miss Rate  : 33.33%
+AMAT       : 3.667 cycles (36.67 ns)
+  = 2.00 + 0.3333 x 5.00
+Measured   : 3.667 cycles  [model verified]
+Writes     : 16 (write-through, 2.00 cycles each)
+Avg cycles : 3.25 (all accesses)
 -----------------------------------------
 Benchmark completed successfully.
-testbench/tb_cache_performance.v:213: $finish called at 13420000 (1ps)
+All AMAT values verified against measured latency.
+-----------------------------------------
+testbench/tb_cache_performance.v:444: $finish called at 28520000 (1ps)

@@ -1,0 +1,101 @@
+VCD info: dumpfile results/waveforms/address_decoder.vcd opened for output.
+========================================
+ ADDRESS DECODER VERIFICATION
+========================================
+PASS | Address=00000000 Tag=000000 Index= 0 Offset= 0
+PASS | Address=0000000f Tag=000000 Index= 0 Offset=15
+PASS | Address=00000010 Tag=000000 Index= 1 Offset= 0
+PASS | Address=00000040 Tag=000000 Index= 4 Offset= 0
+PASS | Address=00000400 Tag=000001 Index= 0 Offset= 0
+PASS | Address=12345678 Tag=048d15 Index=39 Offset= 8
+PASS | Address=ffffffff Tag=3fffff Index=63 Offset=15
+========================================
+Tests executed : 7
+Tests passed   : 7
+Tests failed   : 0
+========================================
+testbench/tb_address_decoder.v:77: $finish called at 70000 (1ps)
+VCD info: dumpfile results/waveforms/cache_controller.vcd opened for output.
+=================================
+ CACHE CONTROLLER VERIFICATION
+=================================
+PASS | READ  HIT  | Ready=1 Hit=1 MemWr=0 CacheWr=0
+PASS | READ  MISS | Ready=1 Hit=0 MemWr=0 CacheWr=0
+PASS | READ  HIT  | Ready=1 Hit=1 MemWr=0 CacheWr=0
+PASS | WRITE HIT  | Ready=1 Hit=1 MemWr=1 CacheWr=1
+PASS | WRITE MISS | Ready=1 Hit=0 MemWr=1 CacheWr=0
+PASS | READ  MISS | Ready=1 Hit=0 MemWr=0 CacheWr=0
+PASS | Reset returns FSM to IDLE
+=================================
+Tests executed : 7
+Tests passed   : 7
+Tests failed   : 0
+=================================
+CONTROLLER VERIFICATION PASSED
+testbench/tb_cache_controller.v:196: $finish called at 250000 (1ps)
+VCD info: dumpfile results/waveforms/cache_memory.vcd opened for output.
+=====================================
+ CACHE MEMORY VERIFICATION
+=====================================
+PASS | Initial valid bit is zero
+PASS | Line=0 MemoryBlock=0
+PASS | Line=1 MemoryBlock=1
+PASS | Line=0 MemoryBlock=0
+PASS | Line=0 MemoryBlock=64
+PASS | Line=1 MemoryBlock=1
+PASS | Reset invalidates cache
+=====================================
+Tests executed : 7
+Tests passed   : 7
+Tests failed   : 0
+=====================================
+testbench/tb_cache_memory.v:221: $finish called at 72000 (1ps)
+VCD info: dumpfile results/waveforms/cache_rw.vcd opened for output.
+=====================================
+ CACHE READ/WRITE VERIFICATION
+=====================================
+PASS | READ  Addr=00000000 Hit=0 Cycles=7
+PASS | WRITE Addr=00000004 Hit=1 Cycles=2
+PASS | READ  Addr=00000004 Hit=1 Cycles=2
+PASS | READ  Addr=00000000 Hit=1 Cycles=2
+PASS | WRITE Addr=00000010 Hit=0 Cycles=2
+PASS | READ  Addr=00000010 Hit=0 Cycles=7
+PASS | READ  Addr=00000010 Hit=1 Cycles=2
+PASS | WRITE Addr=00000400 Hit=0 Cycles=2
+PASS | READ  Addr=00000000 Hit=1 Cycles=2
+PASS | READ  Addr=00000400 Hit=0 Cycles=7
+PASS | READ  Addr=00000000 Hit=0 Cycles=7
+=====================================
+ PHASE 7: EXTENDED VERIFICATION
+=====================================
+PASS | Write-through memory consistency
+PASS | Cache and memory agree
+PASS | Write miss updated memory
+PASS | Conflicting block preserved
+PASS | READ  Addr=00000ffc Hit=0 Cycles=7
+PASS | Reset invalidates cache
+PASS | READ  Addr=00000000 Hit=0 Cycles=7
+=====================================
+Tests executed : 18
+Tests passed   : 18
+Tests failed   : 0
+=====================================
+ALL VERIFICATION TESTS PASSED
+testbench/tb_cache_rw.v:324: $finish called at 850000 (1ps)
+VCD info: dumpfile results/waveforms/cache_top.vcd opened for output.
+========================================
+ DIRECT-MAPPED CACHE INTEGRATION TEST
+========================================
+PASS | Address=00000000 Data=00000001 Hit=0 Cycles=7
+PASS | Address=00000000 Data=00000001 Hit=1 Cycles=2
+PASS | Address=00000004 Data=00000002 Hit=1 Cycles=2
+PASS | Address=00000400 Data=00000401 Hit=0 Cycles=7
+PASS | Address=00000000 Data=00000001 Hit=0 Cycles=7
+PASS | Address=00000010 Data=00000010 Hit=0 Cycles=7
+PASS | Address=00000010 Data=00000010 Hit=1 Cycles=2
+========================================
+Tests executed : 7
+Tests passed   : 7
+Tests failed   : 0
+========================================
+testbench/tb_cache_top.v:202: $finish called at 490000 (1ps)
