@@ -1,76 +1,131 @@
-# Direct-Mapped Cache Controller Using Verilog HDL
+# Direct-Mapped Cache Controller (Verilog HDL)
 
-A hardware-description-language project implementing a **1 KB direct-mapped cache controller** with cache hit/miss detection, memory block refill, write-through updates, and no-write-allocate behavior.
+A **1 KB direct-mapped cache controller** with hit/miss detection,
+block refill, write-through updates and no-write-allocate behaviour —
+verified by a self-checking regression suite and characterised with
+hit-rate and **AMAT** measurements across six memory-access patterns.
 
-## Project Overview
+**Status:** 46 / 46 functional assertions pass. 6 workloads benchmarked.
+Generic synthesis clean.
 
-This project explores how cache memory can improve processor memory-access performance by exploiting temporal and spatial locality.
+---
 
-The design is implemented in Verilog HDL and evaluated using functional simulation, waveform inspection, performance benchmarks, and generic hardware synthesis.
+## Quick start
 
-## Features
+```bash
+make regress    # compile and run all functional tests
+make perf       # performance benchmark + AMAT + traces
+make analyze    # regenerate the performance graphs
+make synth      # Yosys generic synthesis
+make all        # everything above
+```
 
-- 32-bit address decoding
-- 64 cache lines with 16-byte blocks
-- 22-bit tag comparison and valid-bit tracking
-- Read hit/miss detection
-- Automatic cache refill on read misses
-- Write-through and no-write-allocate support
-- Direct-mapped replacement behavior
-- Performance benchmarking using different access patterns
-- Waveform generation and synthesis analysis
+Requires Icarus Verilog, Yosys, Python 3 with matplotlib, and GTKWave
+for waveform viewing.
 
-## Tools
+---
 
-- Verilog HDL
-- Icarus Verilog
-- GTKWave
-- Yosys
-- Python
-- Matplotlib
+## Configuration
+
+| Parameter | Value |
+|---|---|
+| Cache capacity | 1 KB (64 lines x 16 bytes) |
+| Address width | 32 bits |
+| Tag / Index / Offset | 22 / 6 / 4 bits |
+| Word size | 32 bits |
+| Write policy | Write-through, no-write-allocate |
+| Backing memory | 4 KB model, 4-cycle read latency |
+| Clock | 10 ns |
+
+```
+ 31                        10 9        4 3      0
++----------------------------+----------+--------+
+|          TAG (22)          | INDEX(6) |OFFSET(4)|
++----------------------------+----------+--------+
+```
+
+```
+Cache line = (Address / 16) mod 64
+Cache hit  = Valid[index] AND (Tag[index] == Address[31:10])
+```
+
+---
 
 ## Architecture
 
-**CPU → Address Decoder → Cache Lookup → Cache Controller → Cache / Main Memory**
-
-Each address is divided into a 22-bit tag, 6-bit index, and 4-bit block offset.
-
-A cache hit occurs when the selected line is valid and its stored tag matches the requested tag.
-
-## Running the Project
-
-Compile the current read/write testbench:
-
-```bash
-iverilog -g2012 -Wall -s tb_cache_rw -o results/cache_rw_sim \
-  rtl/address_decoder.v rtl/cache_data_ram.v \
-  rtl/cache_tag_ram.v rtl/valid_bit_ram.v \
-  rtl/main_memory.v rtl/tag_comparator.v \
-  rtl/cache_controller.v rtl/cache_top.v \
-  testbench/tb_cache_rw.v
+```
+CPU -> address_decoder -> tag/valid/data RAMs -> tag_comparator
+                                                      |
+                                              cache_controller (FSM)
+                                                      |
+                                                 main_memory
 ```
 
-Run the simulation:
+Controller FSM: `IDLE -> LOOKUP -> RESPOND` on a hit;
+`IDLE -> LOOKUP -> MISS_WAIT -> REFILL -> RESPOND` on a read miss.
+Writes never enter `MISS_WAIT` — that is what makes the design
+no-write-allocate.
 
-```bash
-vvp results/cache_rw_sim
+| Access | Latency |
+|---|---:|
+| Hit (read or write) | 2 cycles |
+| Read miss | 7 cycles |
+| **Miss penalty** | **5 cycles** |
+
+---
+
+## Results
+
+### Functional verification
+
+| Testbench | Checks | Result |
+|---|---:|---|
+| `tb_address_decoder` | 7 | pass |
+| `tb_cache_controller` | 7 | pass |
+| `tb_cache_memory` | 7 | pass |
+| `tb_cache_rw` | 18 | pass |
+| `tb_cache_top` | 7 | pass |
+| **Total** | **46** | **46 / 46 pass** |
+
+### Performance
+
+Hit time **2 cycles**, miss penalty **5 cycles**, measured by
+calibration, not assumed.
+
+```
+AMAT = HitTime + MissRate x MissPenalty = 2 + MissRate x 5
 ```
 
-View waveforms:
+| Workload | Hit rate | AMAT (cycles) | AMAT (ns) | Speedup |
+|---|---:|---:|---:|---:|
+| Repeated | 96.88% | 2.156 | 21.56 | 3.25x |
+| Sequential | 75.00% | 3.250 | 32.50 | 2.15x |
+| Conflict | 0.00% | 7.000 | 70.00 | 1.00x |
+| PseudoRandom | 15.62% | 6.219 | 62.19 | 1.13x |
+| WorkingSet | 75.00% | 3.250 | 32.50 | 2.15x |
+| ReadWriteMix | 66.67% | 3.667 | 36.67 | 1.91x |
 
-```bash
-gtkwave results/waveforms/cache_rw.vcd
-```
+Speedup is against an uncached system (70 ns per access).
 
-Generate performance charts after creating `results/performance.csv`:
+Three results carry the analysis:
 
-```bash
-python3 scripts/analyze_performance.py
-```
+- **Sequential hits exactly 75%** because a 16-byte block holds four
+  words: one compulsory miss serves the next three references. Spatial
+  locality, working as designed.
+- **Conflict hits 0%** with 98% of the cache empty. Two addresses
+  sharing an index evict each other forever, and AMAT degrades to
+  exactly the no-cache figure. This is the quantitative case for
+  set-associativity.
+- **PseudoRandom (15.62%) vs WorkingSet (75.00%)** use the *same*
+  random generator and differ only in footprint — 4 KB versus 512 B.
+  Capacity, not randomness, causes the collapse.
 
-## Synthesis
+Every AMAT figure is asserted against the latency actually observed in
+simulation; a disagreement over 0.01 cycles fails the run.
 
-The design was processed using Yosys generic synthesis.
+### Synthesis
+
+Yosys generic (technology-independent) synthesis:
 
 | Metric | Result |
 |---|---:|
@@ -78,19 +133,51 @@ The design was processed using Yosys generic synthesis.
 | Wires | 1,765 |
 | Wire bits | 87,697 |
 
-These are technology-independent synthesis statistics, not FPGA-specific utilization or timing measurements.
+No warnings, no inferred latches. These are **not** FPGA LUT counts and
+no timing closure is claimed.
+
+---
+
+## Repository layout
+
+```
+rtl/                  8 synthesisable modules
+testbench/            5 functional + 1 performance testbench
+scripts/              analyze_performance.py, synth.ys
+docs/                 architecture.md, testing.md, project_report.md
+results/
+  performance.csv     machine-readable benchmark summary
+  traces/             per-reference memory-access traces (448 refs)
+  graphs/             5 charts
+  logs/               regression and benchmark transcripts
+  waveforms/          VCD files for GTKWave
+  synthesis/          Yosys report
+backups/phase5/       historical snapshot, not part of the build
+```
+
+### Viewing waveforms
+
+```bash
+make waves TB=cache_rw
+```
+
+---
 
 ## Limitations
 
-The current design supports aligned 32-bit accesses within a 4 KB simulated backing memory. Memory latency and request handling are simplified for educational use.
+- Aligned 32-bit accesses only.
+- 4 KB backing-memory model; memory latency is a fixed 4-cycle counter.
+- One outstanding request — no pipelining, no write buffer.
+- Simulation and generic synthesis only; no FPGA place-and-route.
 
-## Project Documentation
+---
 
-- `docs/architecture.md` — System architecture and design decisions
-- `docs/testing.md` — Verification strategy
-- `docs/project_report.md` — Final technical report
-- `results/` — Simulation and synthesis outputs
+## Documentation
 
-## Course
+| Document | Read it for |
+|---|---|
+| [`docs/Presentation.pptx`](docs/Presentation.pptx) | PowerPoint Presentation |
+| [`docs/IEEE_Report.pdf`](docs/IEEE_Report.pdf) | IEEE Technical Project Report |
+| [`docs/architecture.md`](docs/architecture.md) | Design decisions and trade-offs |
+| [`docs/testing.md`](docs/testing.md) | Verification strategy and coverage |
 
-Modern Computer Architecture — Academic RTL Design Project
